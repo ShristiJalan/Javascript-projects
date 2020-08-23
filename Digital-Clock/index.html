@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style type="text/css">
+        body{
+            background: #000;
+        }
+        .clock{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: #fff;
+            font-size: 80px;
+            border: 1px solid #ccc;
+            padding: 0px 5px 0px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="MyClockDisplay" class="clock"></div>
+    <script type="text/javascript">
+
+        function showTime() {
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM"
+
+            if(h >= 12){
+                h = h-12;
+                session = "PM";
+            }
+
+            if(h == 0){
+                h = 12;
+            }
+
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            // if(h < 10){
+            //     h = "0" + h;
+            // }
+
+            // if(m < 10){
+            //     m = "0" + m;
+            // }
+
+            // if(s < 10){
+            //     s = "0" + s;
+            // }
+
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+            // I am doing this as innerText will not work in firefox and textContent will not work in Internet Explorer
+
+            setTimeout(showTime, 1000);
+        }
+
+        showTime();
+        // setInterval(showTime, 1000);
+
+        // The difference between setInterval and setTimeout is: setInterval will call the function in a specified time and setTimeout will call the function once the time is out
+    </script>
+</body>
+
+</html>
