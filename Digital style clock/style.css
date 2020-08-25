@@ -1,0 +1,9 @@
+
+#clock{
+    font-size: 150px;
+    font-family: Orbitron;
+    width: 100%;
+    text-align: center;
+    overflow-x: hidden;
+    padding: 0px 5px 0px 5px;
+}
